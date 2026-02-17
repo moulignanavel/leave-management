@@ -65,6 +65,60 @@ function LandingPage() {
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         padding: '20px 0',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 20px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <CompanyLogo size="medium" variant="default" />
+          </div>
+          <div style={{ display: 'flex', gap: '15px' }} className="landing-header-buttons">
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                background: 'rgba(255,255,255,0.2)',
+                border: '1px solid white',
+                color: 'white',
+                padding: '10px 25px',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: '500',
+                transition: 'all 0.3s'
+              }}
+              onMouseOver={(e) => {
+                e.target.style.background = 'rgba(255,255,255,0.3)';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.background = 'rgba(255,255,255,0.2)';
+              }}
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => navigate('/register')}
+              style={{
+                background: 'white',
+                border: 'none',
+                color: '#667eea',
+                padding: '10px 25px',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: '500',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                transition: 'all 0.3s'
+              }}
+              onMouseOver={(e) => {
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseOut={(e) => {
                 e.target.style.transform = 'scale(1)';
               }}
             >
@@ -86,7 +140,7 @@ function LandingPage() {
         position: 'relative'
       }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h1 style={{ 
+          <h1 className="hero-title" style={{ 
             fontSize: '48px', 
             marginBottom: '20px',
             fontWeight: 'bold',
@@ -94,7 +148,7 @@ function LandingPage() {
           }}>
             Simplify Leave Management for Your Organization
           </h1>
-          <p style={{ 
+          <p className="hero-subtitle" style={{ 
             fontSize: '20px', 
             marginBottom: '40px',
             opacity: 0.95,
@@ -103,7 +157,7 @@ function LandingPage() {
             A comprehensive solution to manage employee time-off requests, approvals, and tracking. 
             Streamline your HR processes with our intuitive platform.
           </p>
-          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-buttons" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               onClick={() => navigate('/register')}
               style={{
@@ -158,7 +212,7 @@ function LandingPage() {
       {/* Features Section */}
       <section style={{ padding: '80px 20px', background: 'white' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ 
+          <h2 className="section-title" style={{ 
             textAlign: 'center', 
             fontSize: '36px', 
             marginBottom: '50px',
@@ -166,7 +220,7 @@ function LandingPage() {
           }}>
             Powerful Features for Modern Teams
           </h2>
-          <div style={{ 
+          <div className="feature-card" style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
             gap: '30px' 
@@ -321,7 +375,7 @@ function LandingPage() {
       {/* Benefits Section */}
       <section style={{ padding: '80px 20px', background: '#f8f9fa' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ 
+          <h2 className="section-title" style={{ 
             textAlign: 'center', 
             fontSize: '36px', 
             marginBottom: '50px',
@@ -329,7 +383,7 @@ function LandingPage() {
           }}>
             Why Choose Our System?
           </h2>
-          <div style={{ 
+          <div className="stats-grid" style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
             gap: '40px',
@@ -363,10 +417,10 @@ function LandingPage() {
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '40px', marginBottom: '20px' }}>
+          <h2 className="cta-title" style={{ fontSize: '40px', marginBottom: '20px' }}>
             Ready to Transform Your Leave Management?
           </h2>
-          <p style={{ fontSize: '20px', marginBottom: '40px', opacity: 0.95 }}>
+          <p className="cta-subtitle" style={{ fontSize: '20px', marginBottom: '40px', opacity: 0.95 }}>
             Join thousands of organizations already using our platform to streamline their HR processes.
           </p>
           <button

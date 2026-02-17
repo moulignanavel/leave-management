@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/auth/authSlice';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import axios from '../api/axios';
+import { GOOGLE_CLIENT_ID } from '../config';
 import CompanyLogo from '../components/CompanyLogo';
 
 function Login() {
@@ -20,7 +21,7 @@ function Login() {
     script.onload = () => {
       if (window.google) {
         window.google.accounts.id.initialize({
-          client_id: '473868904819-ni5pnun4q5aqjathge9ddk8ei5fqanu9.apps.googleusercontent.com',
+          client_id: GOOGLE_CLIENT_ID,
           callback: handleGoogleLogin
         });
 
@@ -44,7 +45,7 @@ function Login() {
 
   const handleGoogleLogin = async (response) => {
     try {
-      const result = await axios.post('http://localhost:5000/api/auth/google-login', {
+      const result = await axios.post('/api/auth/google-login', {
         credential: response.credential
       });
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function NotificationBell() {
   const [notifications, setNotifications] = useState([]);
@@ -22,7 +22,7 @@ function NotificationBell() {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
       
       // Fetch user's leaves for notifications
-      const { data } = await axios.get('http://localhost:5000/api/leaves/my-leaves', config);
+      const { data } = await axios.get('api/leaves/my-leaves', config);
       
       // Get recent status changes (last 7 days)
       const recentLeaves = data.filter(leave => {

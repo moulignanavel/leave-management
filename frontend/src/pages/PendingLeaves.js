@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -18,7 +18,7 @@ function PendingLeaves() {
   const fetchPendingLeaves = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.get('http://localhost:5000/api/leaves/pending', config);
+      const response = await axios.get('api/leaves/pending', config);
       setLeaves(response.data);
     } catch (error) {
       toast.error('Failed to fetch pending leaves');
@@ -28,7 +28,7 @@ function PendingLeaves() {
   const handleAction = async (leaveId, status) => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`http://localhost:5000/api/leaves/${leaveId}`, { 
+      await axios.put(`api/leaves/${leaveId}`, { 
         status, 
         comments 
       }, config);

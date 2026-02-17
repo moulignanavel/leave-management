@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function OrganizationAnalytics() {
@@ -21,7 +21,7 @@ function OrganizationAnalytics() {
   const fetchAnalytics = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/analytics/organization', config);
+      const { data } = await axios.get('api/analytics/organization', config);
       setAnalyticsData(data);
       setLoading(false);
     } catch (error) {
@@ -36,7 +36,7 @@ function OrganizationAnalytics() {
         headers: { Authorization: `Bearer ${user.token}` },
         responseType: 'blob'
       };
-      const response = await axios.get('http://localhost:5000/api/analytics/export/organization', config);
+      const response = await axios.get('api/analytics/export/organization', config);
       
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
@@ -59,7 +59,7 @@ function OrganizationAnalytics() {
         responseType: 'blob',
         params: dateRange
       };
-      const response = await axios.get('http://localhost:5000/api/analytics/export/payroll', config);
+      const response = await axios.get('api/analytics/export/payroll', config);
       
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');

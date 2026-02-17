@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getMyLeaves } from '../features/leave/leaveSlice';
-import axios from 'axios';
+import axios from '../api/axios';
 import ProfileAvatar from '../components/ProfileAvatar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -23,7 +23,7 @@ function ManagerDashboard() {
   const fetchPendingLeaves = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.get('http://localhost:5000/api/leaves/pending', config);
+      const response = await axios.get('api/leaves/pending', config);
       setPendingTeamLeaves(response.data);
       
       // Calculate stats

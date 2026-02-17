@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 import ProfileAvatar from '../components/ProfileAvatar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -27,7 +27,7 @@ function AdminDashboard() {
   const fetchUsers = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.get('http://localhost:5000/api/admin/users', config);
+      const response = await axios.get('/api/admin/users', config);
       setUsers(response.data);
       setStats(prev => ({ ...prev, totalUsers: response.data.length }));
     } catch (error) {
@@ -38,7 +38,7 @@ function AdminDashboard() {
   const fetchAllLeaves = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.get('http://localhost:5000/api/admin/reports', config);
+      const response = await axios.get('/api/admin/reports', config);
       setLeaves(response.data);
       
       const pending = response.data.filter(l => l.status === 'pending').length;

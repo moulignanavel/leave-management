@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function ManageUsers() {
@@ -27,7 +27,7 @@ function ManageUsers() {
   const fetchUsers = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/admin/users', config);
+      const { data } = await axios.get('api/admin/users', config);
       setUsers(data);
       setLoading(false);
     } catch (error) {
@@ -45,14 +45,14 @@ function ManageUsers() {
       if (editingUser) {
         // Update user
         await axios.put(
-          `http://localhost:5000/api/admin/users/${editingUser._id}`,
+          `api/admin/users/${editingUser._id}`,
           formData,
           config
         );
         toast.success('User updated successfully');
       } else {
         // Create user
-        await axios.post('http://localhost:5000/api/admin/users', formData, config);
+        await axios.post('api/admin/users', formData, config);
         toast.success('User created successfully');
       }
       
@@ -90,7 +90,7 @@ function ManageUsers() {
     
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, config);
+      await axios.delete(`api/admin/users/${userId}`, config);
       toast.success('User deleted successfully');
       fetchUsers();
     } catch (error) {

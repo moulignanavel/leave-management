@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios from '../../api/axios';
 
 const getConfig = (token) => ({
   headers: { Authorization: `Bearer ${token}` }

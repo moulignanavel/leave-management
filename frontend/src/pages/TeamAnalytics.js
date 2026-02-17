@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function TeamAnalytics() {
@@ -17,7 +17,7 @@ function TeamAnalytics() {
   const fetchAnalytics = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/analytics/team', config);
+      const { data } = await axios.get('api/analytics/team', config);
       setAnalyticsData(data);
       setLoading(false);
     } catch (error) {
@@ -32,7 +32,7 @@ function TeamAnalytics() {
         headers: { Authorization: `Bearer ${user.token}` },
         responseType: 'blob'
       };
-      const response = await axios.get('http://localhost:5000/api/analytics/export/team', config);
+      const response = await axios.get('api/analytics/export/team', config);
       
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');

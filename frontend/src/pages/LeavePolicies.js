@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function LeavePolicies() {
@@ -38,7 +38,7 @@ function LeavePolicies() {
   const fetchPolicies = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/admin/policies', config);
+      const { data } = await axios.get('api/admin/policies', config);
       setPolicies(data);
       setLoading(false);
     } catch (error) {
@@ -55,13 +55,13 @@ function LeavePolicies() {
       
       if (editingPolicy) {
         await axios.put(
-          `http://localhost:5000/api/admin/policies/${editingPolicy._id}`,
+          `api/admin/policies/${editingPolicy._id}`,
           formData,
           config
         );
         toast.success('Policy updated successfully');
       } else {
-        await axios.post('http://localhost:5000/api/admin/policies', formData, config);
+        await axios.post('api/admin/policies', formData, config);
         toast.success('Policy created successfully');
       }
       
@@ -113,7 +113,7 @@ function LeavePolicies() {
     
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.delete(`http://localhost:5000/api/admin/policies/${policyId}`, config);
+      await axios.delete(`api/admin/policies/${policyId}`, config);
       toast.success('Policy deleted successfully');
       fetchPolicies();
     } catch (error) {

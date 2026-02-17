@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 
 const IntegrationSettings = () => {
   const { user } = useSelector((state) => state.auth);
@@ -20,7 +20,7 @@ const IntegrationSettings = () => {
           Authorization: `Bearer ${user.token}`
         }
       };
-      const { data } = await axios.get('http://localhost:5000/api/integrations/status', config);
+      const { data } = await axios.get('api/integrations/status', config);
       setIntegrationStatus(data);
       setLoading(false);
     } catch (error) {
@@ -37,7 +37,7 @@ const IntegrationSettings = () => {
           Authorization: `Bearer ${user.token}`
         }
       };
-      const { data } = await axios.get('http://localhost:5000/api/integrations/google/auth', config);
+      const { data } = await axios.get('api/integrations/google/auth', config);
       
       // Open OAuth window
       window.open(data.authUrl, '_blank', 'width=600,height=700');
@@ -57,7 +57,7 @@ const IntegrationSettings = () => {
           Authorization: `Bearer ${user.token}`
         }
       };
-      const { data } = await axios.get('http://localhost:5000/api/integrations/outlook/auth', config);
+      const { data } = await axios.get('api/integrations/outlook/auth', config);
       
       // Open OAuth window
       window.open(data.authUrl, '_blank', 'width=600,height=700');
@@ -89,7 +89,7 @@ const IntegrationSettings = () => {
       };
       
       const { data } = await axios.get(
-        `http://localhost:5000/api/integrations/payroll/data?startDate=${startDate}&endDate=${endDate}&format=${format}`,
+        `api/integrations/payroll/data?startDate=${startDate}&endDate=${endDate}&format=${format}`,
         config
       );
       

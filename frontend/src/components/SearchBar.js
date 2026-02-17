@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function SearchBar() {
   const { user } = useSelector((state) => state.auth);
@@ -43,7 +43,7 @@ function SearchBar() {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
       const response = await axios.get(
-        `http://localhost:5000/api/search?q=${encodeURIComponent(query)}`,
+        `api/search?q=${encodeURIComponent(query)}`,
         config
       );
       setSearchResults(response.data);

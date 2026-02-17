@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function AuditLogs() {
@@ -27,7 +27,7 @@ function AuditLogs() {
         headers: { Authorization: `Bearer ${user.token}` },
         params: filters
       };
-      const { data } = await axios.get('http://localhost:5000/api/admin/audit-logs', config);
+      const { data } = await axios.get('api/admin/audit-logs', config);
       setLogs(data.logs);
       setTotal(data.total);
       setLoading(false);

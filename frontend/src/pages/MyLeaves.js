@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getMyLeaves } from '../features/leave/leaveSlice';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function MyLeaves() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function MyLeaves() {
     try {
       const token = user.token;
       const config = { headers: { Authorization: `Bearer ${token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/leaves/stats', config);
+      const { data } = await axios.get('api/leaves/stats', config);
       setStats(data);
     } catch (error) {
       console.error('Failed to fetch stats');
@@ -36,7 +36,7 @@ function MyLeaves() {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob'
       };
-      const { data } = await axios.get(`http://localhost:5000/api/integrations/ical/${leaveId}`, config);
+      const { data } = await axios.get(`api/integrations/ical/${leaveId}`, config);
       
       // Create download link
       const url = window.URL.createObjectURL(new Blob([data]));

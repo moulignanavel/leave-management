@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function Profile() {
@@ -44,7 +44,7 @@ function Profile() {
         updateData.newPassword = formData.newPassword;
       }
 
-      await axios.put('http://localhost:5000/api/users/profile', updateData, config);
+      await axios.put('api/users/profile', updateData, config);
       toast.success('Profile updated successfully');
       setIsEditing(false);
       setFormData({ ...formData, currentPassword: '', newPassword: '', confirmPassword: '' });

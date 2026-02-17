@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function TeamCalendar() {
@@ -22,11 +22,11 @@ function TeamCalendar() {
   const fetchTeamLeaves = async () => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      let endpoint = 'http://localhost:5000/api/leaves/all';
+      let endpoint = 'api/leaves/all';
       
       // Managers see only their team, admins see all
       if (user.role === 'manager') {
-        endpoint = 'http://localhost:5000/api/leaves/pending';
+        endpoint = 'api/leaves/pending';
       }
       
       const response = await axios.get(endpoint, config);

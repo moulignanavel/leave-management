@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createLeave } from '../features/leave/leaveSlice';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ApplyLeave() {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ function ApplyLeave() {
       try {
         const token = user.token;
         const config = { headers: { Authorization: `Bearer ${token}` } };
-        const { data } = await axios.get('http://localhost:5000/api/leaves/stats', config);
+        const { data } = await axios.get('api/leaves/stats', config);
         setLeaveBalance(data.balance);
       } catch (error) {
         console.error('Failed to fetch leave balance');

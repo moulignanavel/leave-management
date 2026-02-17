@@ -1,321 +1,250 @@
-# 🏢 Leave Management System
+# Leave Management System
 
-A comprehensive MERN stack application for managing employee leave requests with role-based access control, Google OAuth integration, and real-time notifications.
+A comprehensive full-stack leave management application built with MERN stack (MongoDB, Express, React, Node.js).
 
-![MS IT Solutions](frontend/public/assets/ms-logo.png.jpg)
+## 🌐 Live Demo
 
-## ✨ Features
+- **Frontend:** https://leave-management-frontend-five.vercel.app
+- **Backend:** https://leave-management-he2w.onrender.com
 
-### 👤 Employee Features
-- Apply for leave with multiple leave types
-- View leave history and status
-- Update profile with mobile number and employee ID
-- Google Calendar integration
-- Real-time notifications
-- Profile picture upload
+## 📋 Features
 
-### 👔 Manager Features
-- Approve/reject team leave requests
-- View team calendar
-- Team leave statistics
-- Search team members and leaves
-- Apply for own leave
-- Manage team availability
+### Core Features
+- ✅ Multi-role authentication (Admin, Manager, Employee)
+- ✅ Google OAuth integration
+- ✅ Leave application and approval workflow
+- ✅ Multi-level approval system (Manager → Admin/HR)
+- ✅ Real-time leave balance tracking
+- ✅ Email notifications for all leave actions
+- ✅ Password reset with OTP
+- ✅ Profile management with picture upload
+- ✅ Mobile-responsive design
 
-### 🔐 Admin Features
-- User management (add, edit, delete users)
-- Leave policy configuration
-- System-wide analytics and reports
-- Audit logs
-- Export data to CSV/Excel
-- System monitoring
+### Admin Features
+- 👥 User management (CRUD operations)
+- 📊 Analytics and reports
+- 📋 Leave policy management
+- 🔍 Audit logs
+- 📈 Organization-wide analytics
+- 📤 Export reports (PDF, Excel, CSV)
 
-### 🔧 Technical Features
-- JWT authentication
-- Google OAuth 2.0 login
-- Role-based access control (Employee, Manager, Admin)
-- Email notifications
-- Password reset functionality
-- Responsive design
-- Real-time search
-- MongoDB database
-- RESTful API
+### Manager Features
+- ✅ Team leave approvals
+- 📅 Team calendar view
+- 📊 Team analytics
+- 🔔 Pending approval notifications
 
-## 🚀 Quick Start
+### Employee Features
+- 📝 Apply for leave
+- 📋 View leave history
+- 💰 Check leave balance
+- 📅 Team calendar
+- 🔔 Real-time notifications
 
-### Prerequisites
-- Node.js 18+ installed
-- MongoDB Atlas account (free tier works)
-- Gmail account for email notifications
-- Google Cloud Console account for OAuth
-
-### Local Development
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/YOUR-USERNAME/leave-management-system.git
-cd leave-management-system
-```
-
-2. **Install dependencies**
-```bash
-npm install
-cd frontend && npm install
-cd ..
-```
-
-3. **Configure environment variables**
-```bash
-# Copy .env.example to .env
-cp .env.example .env
-
-# Edit .env with your credentials
-```
-
-4. **Start the application**
-```bash
-# Start both backend and frontend
-npm run dev
-
-# Or start separately:
-# Backend: npm run server
-# Frontend: npm run client
-```
-
-5. **Access the application**
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
-
-### Test Credentials
-- **Admin**: admin@test.com / admin123
-- **Manager**: manager@test.com / manager123
-- **Employee**: employee1@test.com / employee123
-
-## 📦 Deployment
-
-### Quick Deploy (15 minutes)
-See [QUICK_DEPLOY.md](QUICK_DEPLOY.md) for step-by-step instructions to deploy to Render (free tier).
-
-### Full Deployment Guide
-See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for comprehensive deployment options:
-- Option A: Render (Easiest - Free tier)
-- Option B: Vercel + Railway
-- Option C: AWS/Digital Ocean (Professional)
-
-### Deployment Checklist
-See [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) for complete pre and post-deployment checklist.
+### Integrations
+- 📧 Email notifications (Gmail/SMTP)
+- 📅 Google Calendar sync
+- 📅 Outlook Calendar sync
+- 🔍 Global search functionality
 
 ## 🛠️ Technology Stack
 
 ### Frontend
 - React 18
-- Redux Toolkit (state management)
-- React Router (navigation)
-- Axios (API calls)
-- React Toastify (notifications)
+- Redux Toolkit (State Management)
+- React Router v6
+- Axios
+- React Toastify
+- Deployed on Vercel
 
 ### Backend
 - Node.js
 - Express.js
 - MongoDB with Mongoose
-- JWT (authentication)
-- Bcrypt (password hashing)
-- Nodemailer (email)
-- Google Auth Library (OAuth)
+- JWT Authentication
+- Nodemailer (Email)
+- Deployed on Render
 
-### Infrastructure
-- MongoDB Atlas (database)
-- Render/Vercel (hosting)
-- Google Cloud (OAuth)
-- Gmail (email service)
+### External Services
+- MongoDB Atlas (Database)
+- Gmail API (Email)
+- Google OAuth 2.0
+- Vercel (Frontend Hosting)
+- Render (Backend Hosting)
 
-## 📁 Project Structure
+## 📦 Installation
 
-```
-leave-management-system/
-├── backend/
-│   ├── config/          # Database configuration
-│   ├── controllers/     # Route controllers
-│   ├── middleware/      # Auth & error middleware
-│   ├── models/          # Mongoose models
-│   ├── routes/          # API routes
-│   ├── utils/           # Utility functions
-│   └── server.js        # Express server
-├── frontend/
-│   ├── public/          # Static assets
-│   ├── src/
-│   │   ├── components/  # Reusable components
-│   │   ├── features/    # Redux slices
-│   │   ├── pages/       # Page components
-│   │   ├── App.js       # Main app component
-│   │   └── store.js     # Redux store
-│   └── package.json
-├── .env                 # Environment variables (not in git)
-├── .env.example         # Environment template
-├── .gitignore
-├── package.json
-└── README.md
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB Atlas account
+- Gmail account (for email notifications)
+- Google Cloud Console project (for OAuth)
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/moulignanavel/leave-management.git
+cd leave-management
 ```
 
-## 🔐 Environment Variables
+### 2. Backend Setup
+```bash
+cd backend
+npm install
+```
 
-### Backend (.env)
+Create `.env` file in root directory:
 ```env
-MONGO_URI=your-mongodb-connection-string
-JWT_SECRET=your-secret-key
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 PORT=5000
 NODE_ENV=development
+
+# Email Configuration
 EMAIL_USER=your-email@gmail.com
-EMAIL_PASSWORD=your-app-password
+EMAIL_PASSWORD=your-gmail-app-password
+
+# Google OAuth
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 GOOGLE_REDIRECT_URI=http://localhost:5000/api/integrations/google/callback
+
+# Frontend URL (for CORS)
+FRONTEND_URL=http://localhost:3000
 ```
 
-### Frontend (.env)
+### 3. Frontend Setup
+```bash
+cd frontend
+npm install
+```
+
+Create `.env` file in frontend directory:
 ```env
 REACT_APP_API_URL=http://localhost:5000
 REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
 ```
 
-## 📚 API Documentation
+### 4. Run Application
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login with email/password
-- `POST /api/auth/google` - Login with Google OAuth
-- `POST /api/auth/forgot-password` - Request password reset
-- `POST /api/auth/reset-password/:token` - Reset password
+**Backend:**
+```bash
+cd backend
+npm start
+```
 
-### Leaves
-- `GET /api/leaves` - Get user's leaves
-- `POST /api/leaves` - Create leave request
-- `PUT /api/leaves/:id` - Update leave request
-- `DELETE /api/leaves/:id` - Delete leave request
-- `GET /api/leaves/pending` - Get pending leaves (Manager)
-- `PUT /api/leaves/:id/approve` - Approve leave (Manager)
-- `PUT /api/leaves/:id/reject` - Reject leave (Manager)
+**Frontend:**
+```bash
+cd frontend
+npm start
+```
 
-### Users
-- `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update user profile
+Visit: http://localhost:3000
+
+## 🚀 Deployment
+
+### Backend (Render)
+1. Create account on Render.com
+2. Connect GitHub repository
+3. Create Web Service
+4. Set environment variables
+5. Deploy
+
+### Frontend (Vercel)
+1. Create account on Vercel.com
+2. Import GitHub repository
+3. Set root directory to `frontend`
+4. Add environment variables
+5. Deploy
+
+See detailed guides:
+- [Email Setup Guide](EMAIL_SETUP_COMPLETE_GUIDE.md)
+- [Keep Server Awake](KEEP_SERVER_AWAKE.md)
+- [Fix Manager Dashboard](FIX_MANAGER_DASHBOARD.md)
+
+## 👥 Test Accounts
 
 ### Admin
-- `GET /api/admin/users` - Get all users
-- `POST /api/admin/users` - Create user
-- `PUT /api/admin/users/:id` - Update user
-- `DELETE /api/admin/users/:id` - Delete user
-- `GET /api/admin/reports` - Get system reports
+- Email: `admin@test.com`
+- Password: `admin123`
 
-### Search
-- `GET /api/search?q=query` - Search users and leaves
+### Manager
+- Email: `manager@test.com`
+- Password: `manager123`
 
-## 🧪 Testing
+### Employee
+- Email: `employee1@test.com`
+- Password: `employee123`
 
-### Run Tests
-```bash
-# Backend tests
-npm test
+## 📖 Documentation
 
-# Frontend tests
-cd frontend && npm test
-```
+- [Architecture](ARCHITECTURE.md) - System architecture and design
+- [Technology Stack](TECHNOLOGY_STACK.md) - Detailed tech stack information
+- [Testing Checklist](COMPLETE_TESTING_CHECKLIST.md) - Comprehensive testing guide
+- [Troubleshooting](TROUBLESHOOTING.md) - Common issues and solutions
 
-### Test User Creation
-```bash
-# Create test users
-node backend/seedUsers.js
+## 🔧 Configuration
 
-# Test login
-node backend/testLogin.js
-```
+### Email Notifications
+1. Enable 2-Step Verification in Gmail
+2. Generate App Password: https://myaccount.google.com/apppasswords
+3. Add to environment variables
 
-## 🐛 Troubleshooting
+### Google OAuth
+1. Create project in Google Cloud Console
+2. Enable Google+ API
+3. Create OAuth 2.0 credentials
+4. Add authorized origins and redirect URIs
 
-### Common Issues
+### MongoDB
+1. Create cluster on MongoDB Atlas
+2. Create database user
+3. Whitelist IP addresses (0.0.0.0/0 for all)
+4. Get connection string
 
-**MongoDB Connection Failed**
-- Check Network Access in MongoDB Atlas
-- Verify connection string in .env
-- Ensure IP is whitelisted (0.0.0.0/0 for cloud)
+## 🐛 Known Issues
 
-**Google OAuth Not Working**
-- Verify redirect URIs in Google Console
-- Check GOOGLE_CLIENT_ID matches
-- Clear browser cache
+### Performance
+- First request to backend takes 30-50 seconds (Render free tier cold start)
+- Solution: Use cron job to keep server awake (see KEEP_SERVER_AWAKE.md)
 
-**CORS Errors**
-- Update FRONTEND_URL in backend .env
-- Check CORS configuration in server.js
-- Verify API_URL in frontend
+### Manager Dashboard
+- Employees must be assigned to manager to see pending approvals
+- Solution: Run `node backend/assignManagerToEmployees.js`
 
-**Email Not Sending**
-- Use Gmail App Password, not regular password
-- Enable 2-Step Verification in Google Account
-- Check EMAIL_USER and EMAIL_PASSWORD
+### Email Notifications
+- Requires Gmail App Password configuration
+- Solution: See EMAIL_SETUP_COMPLETE_GUIDE.md
 
-## 📈 Performance
+## 🤝 Contributing
 
-- Page load time: < 2 seconds
-- API response time: < 500ms
-- Supports 1000+ concurrent users
-- 99.9% uptime target
-
-## 🔒 Security
-
-- JWT token authentication
-- Password hashing with bcrypt
-- HTTPS in production
-- CORS protection
-- Input validation
-- XSS protection
-- Rate limiting (optional)
-
-## 📄 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
-## 👥 Contributing
-
-Contributions are welcome! Please follow these steps:
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## �‍💻 Author
+
+**Mouli Gnanavel**
+- GitHub: [@moulignanavel](https://github.com/moulignanavel)
+
+## 🙏 Acknowledgments
+
+- MS IT Solutions for branding
+- All contributors and testers
+- Open source community
 
 ## 📞 Support
 
 For issues and questions:
 - Create an issue on GitHub
-- Email: support@msitsolutions.com
-- Documentation: See deployment guides
-
-## 🎯 Roadmap
-
-### Upcoming Features
-- [ ] Mobile app (React Native)
-- [ ] File upload for leave attachments
-- [ ] Advanced analytics dashboard
-- [ ] Multi-language support
-- [ ] Slack/Teams integration
-- [ ] Biometric attendance integration
-- [ ] Leave carry-forward rules
-- [ ] Holiday calendar management
-
-## 🙏 Acknowledgments
-
-- MS IT Solutions for project sponsorship
-- MongoDB Atlas for database hosting
-- Render for deployment platform
-- Google for OAuth and Calendar APIs
+- Check [Troubleshooting Guide](TROUBLESHOOTING.md)
+- Review [Testing Checklist](COMPLETE_TESTING_CHECKLIST.md)
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: February 2026  
-**Status**: Production Ready ✅
-
-**Made with ❤️ by MS IT Solutions**
-#   l e a v e - m a n a g e m e n t  
- 
+**Built with ❤️ using MERN Stack**

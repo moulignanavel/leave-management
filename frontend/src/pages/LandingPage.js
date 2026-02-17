@@ -7,64 +7,64 @@ function LandingPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .landing-header-buttons {
+            flex-direction: column;
+            gap: 10px !important;
+            width: 100%;
+          }
+          .landing-header-buttons button {
+            width: 100%;
+          }
+          .hero-title {
+            font-size: 32px !important;
+          }
+          .hero-subtitle {
+            font-size: 16px !important;
+          }
+          .hero-buttons {
+            flex-direction: column;
+            width: 100%;
+          }
+          .hero-buttons button {
+            width: 100%;
+          }
+          .section-title {
+            font-size: 28px !important;
+          }
+          .feature-card {
+            min-width: 100% !important;
+          }
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+          }
+          .cta-title {
+            font-size: 28px !important;
+          }
+          .cta-subtitle {
+            font-size: 16px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-title {
+            font-size: 24px !important;
+          }
+          .section-title {
+            font-size: 24px !important;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+
       {/* Header/Navigation */}
       <header style={{
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         padding: '20px 0',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 20px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-          <CompanyLogo size="large" variant="default" />
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <button
-              onClick={() => navigate('/login')}
-              style={{
-                background: 'rgba(255,255,255,0.2)',
-                border: '2px solid white',
-                color: 'white',
-                padding: '10px 25px',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: '500',
-                transition: 'all 0.3s'
-              }}
-              onMouseOver={(e) => {
-                e.target.style.background = 'white';
-                e.target.style.color = '#667eea';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.background = 'rgba(255,255,255,0.2)';
-                e.target.style.color = 'white';
-              }}
-            >
-              Sign In
-            </button>
-            <button
-              onClick={() => navigate('/register')}
-              style={{
-                background: 'white',
-                border: '2px solid white',
-                color: '#667eea',
-                padding: '10px 25px',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: '500',
-                transition: 'all 0.3s'
-              }}
-              onMouseOver={(e) => {
-                e.target.style.transform = 'scale(1.05)';
-              }}
-              onMouseOut={(e) => {
                 e.target.style.transform = 'scale(1)';
               }}
             >

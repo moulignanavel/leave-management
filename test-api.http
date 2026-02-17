@@ -1,0 +1,53 @@
+# Test API Endpoints
+# Use REST Client extension in VS Code or Postman
+
+### Register User
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "role": "employee",
+  "department": "IT"
+}
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### Create Leave Request (Replace YOUR_TOKEN)
+POST http://localhost:5000/api/leaves
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{
+  "leaveType": "paidLeave",
+  "startDate": "2026-03-01",
+  "endDate": "2026-03-05",
+  "reason": "Family vacation"
+}
+
+### Get My Leaves
+GET http://localhost:5000/api/leaves/my-leaves
+Authorization: Bearer YOUR_TOKEN
+
+### Get Pending Leaves (Manager/Admin only)
+GET http://localhost:5000/api/leaves/pending
+Authorization: Bearer YOUR_TOKEN
+
+### Approve/Reject Leave (Manager/Admin only)
+PUT http://localhost:5000/api/leaves/LEAVE_ID
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{
+  "status": "approved",
+  "comments": "Approved for vacation"
+}

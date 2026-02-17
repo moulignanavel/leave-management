@@ -61,6 +61,9 @@ coverage/
 
 # Production
 /backend/uploads/
+
+# Credentials file (NEVER COMMIT!)
+YOUR_CREDENTIALS.md
 QUICK_DEPLOY.md
 DEPLOYMENT_READY.md
 FIX_GOOGLE_CALENDAR_ERROR.md
